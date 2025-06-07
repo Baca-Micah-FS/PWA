@@ -1,0 +1,77 @@
+/* Colors and fonts*/
+
+$primaryHeaderColor: #ffffff;
+$subTextColor: #d3d3d3;
+$formPanelBgColor: #f2f2f2;
+$formBlue: #348fbc;
+$formDisabledColor: #909090;
+$selectedOptionColor: #212121;
+$fonts: "Open Sans";
+
+html {
+  background-image: url("./img/car-finder-bg.jpg");
+  font-family: "Open Sans", sans-serif;
+}
+
+#h1-head {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+.head {
+  color: $primaryHeaderColor;
+  font-size: 1rem;
+  text-align: center;
+}
+
+body {
+  width: 60vw;
+  margin: auto;
+  margin-top: 26vh;
+}
+
+.form-section {
+  display: flex;
+  justify-content: space-evenly;
+
+  background-color: $formPanelBgColor;
+  // width: 60vw;
+  // margin: auto;
+  // margin-top: 40vh;
+  padding-top: 3.5vh;
+  padding-bottom: 3.5vh;
+  border-radius: 0.7rem;
+
+  form {
+    width: 30%;
+    padding: 0 3rem;
+    select {
+      background-color: $formPanelBgColor;
+      border: none;
+      width: 95%;
+      margin: auto;
+      margin-bottom: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &#make-form {
+      border: 1px solid black;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    fieldset {
+      padding: 0;
+      margin-bottom: 2rem;
+      border-radius: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0;
+      color: $formBlue;
+    }
+  }
+}

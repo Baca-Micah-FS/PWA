@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>New ES6/SCSS Project</title>
+  </head>
+  <body>
+    <section class="head">
+      <h1 id="h1-head">Car Finder</h1>
+      <p>
+        Looking for your dream vehicle? Use the form <br />
+
+        below to find the car of your dreams
+      </p>
+    </section>
+    <br />
+    <section class="form-section">
+      <form>
+        <h1>Year</h1>
+        <fieldset>
+          <legend>Year</legend>
+
+          <label for="year"></label>
+          <select id="year-dropdown" for="year"></select>
+        </fieldset>
+      </form>
+      <form id="make-form">
+        <h1>Make</h1>
+        <fieldset>
+          <legend>Make</legend>
+          <label for="make"></label>
+
+          <select id="make-dropdown" name="make"></select>
+        </fieldset>
+      </form>
+      <form>
+        <h1>Model</h1>
+        <fieldset>
+          <legend>Model</legend>
+
+          <label for="model"></label>
+
+          <select id="model-dropdown" for="model"></select>
+        </fieldset>
+      </form>
+    </section>
+    <script src="bundle.js"></script>
+  </body>
+</html>
