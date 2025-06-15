@@ -1,0 +1,66 @@
+html {
+  background: #1c531d;
+  font-family: "Open Sans";
+}
+#game-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 15vh;
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#h1-p {
+  color: white;
+  font-size: 1rem;
+}
+
+.game-card > p {
+  font-size: 4rem;
+}
+
+#status {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+#win-lose {
+  margin: auto;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.game-card {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 143px;
+  height: 200px;
+  margin-bottom: 3rem;
+}
+
+#restart {
+  background-color: #238ab6;
+  border: none;
+  margin: auto;
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
