@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixiJS Bounce Game (Simplified)</title>
+  </head>
+  <body>
+    <game id="game"></game>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type="module">
+      const app = new PIXI.Application();
+      await app.init({
+        backgroundColor: "#3398b9",
+        width: 800,
+        height: 800,
+      });
+      document.getElementById("game").appendChild(app.canvas);
+
+      const circle = new PIXI.Graphics();
+      circle.beginFill("#f5ef42");
+      circle.drawCircle(5, 5, 5);
+      circle.endFill();
+      circle.x = 450;
+      circle.y = 400;
+
+      let xv = -3 * (Math.random() < 0.5 ? -1 : 1);
+      let yv = 3 * (Math.random() < 0.5 ? -1 : 1);
+      app.stage.addChild(circle);
+
+      // Borders
+      const topBorder = new PIXI.Graphics();
+      const rightBorder = new PIXI.Graphics();
+      const bottomBorder = new PIXI.Graphics();
+      const leftBorder = new PIXI.Graphics();
+
+      topBorder.beginFill("black").drawRect(0, 0, 800, 10).endFill();
+      rightBorder.beginFill("green").drawRect(790, 0, 10, 800).endFill();
+      bottomBorder.beginFill("yellow").drawRect(0, 790, 800, 10).endFill();
+      leftBorder.beginFill("red").drawRect(0, 0, 10, 800).endFill();
+
+      app.stage.addChild(bottomBorder);
+      app.stage.addChild(topBorder);
+      app.stage.addChild(rightBorder);
+      app.stage.addChild(leftBorder);
+
+      let rightHit = false;
+      let bottomtHit = false;
+      let topHit = false;
+      let leftHit = false;
+
+      function borderColorChange(name) {
+        if (name === "top") {
+          topBorder.clear();
+          topBorder.beginFill("orange").drawRect(0, 0, 800, 10).endFill();
+        }
+        if (name === "right") {
+          rightBorder.clear();
+          rightBorder.beginFill("orange").drawRect(790, 0, 10, 800).endFill();
+        }
+        if (name === "bottom") {
+          bottomBorder.clear();
+          bottomBorder.beginFill("orange").drawRect(0, 790, 800, 10).endFill();
+        }
+        if (name === "left") {
+          leftBorder.clear();
+          leftBorder.beginFill("orange").drawRect(0, 0, 10, 800).endFill();
+        }
+      }
+
+      const minRandom = 0.7;
+      const maxRandom = 0.6;
+
+      const allBordersHit = new Promise((resolve) => {
+        app.ticker.add(() => {
+          if (circle.x >= 790) {
+            xv = -xv * (minRandom + Math.random() * maxRandom);
+            yv = yv * (minRandom + Math.random() * maxRandom);
+            rightHit = true;
+            borderColorChange("right");
+          }
+          if (circle.x <= 10) {
+            xv = -xv * (minRandom + Math.random() * maxRandom);
+            yv = yv * (minRandom + Math.random() * maxRandom);
+            leftHit = true;
+            borderColorChange("left");
+          }
+          if (circle.y >= 790) {
+            yv = -yv * (minRandom + Math.random() * maxRandom);
+            xv = xv * (minRandom + Math.random() * maxRandom);
+            bottomtHit = true;
+            borderColorChange("bottom");
+          }
+          if (circle.y <= 10) {
+            yv = -yv * (minRandom + Math.random() * maxRandom);
+            xv = xv * (minRandom + Math.random() * maxRandom);
+            topHit = true;
+            borderColorChange("top");
+          }
+
+          circle.x += xv;
+          circle.y += yv;
+
+          if (topHit && rightHit && bottomtHit && leftHit) {
+            setTimeout(resolve, 50);
+          }
+        });
+      });
+
+      allBordersHit.then(() => {
+        app.ticker.stop();
+        alert("Complete!");
+      });
+    </script>
+  </body>
+</html>
